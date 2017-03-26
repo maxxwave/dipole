@@ -15,5 +15,6 @@ int main(){
    std::cout<<"Total number of atoms is:"<<"\t"<<create::index<<std::endl;
    fields_t::demag_fields();
    std::cout<<st::H_total[0]<<"T"<<std::endl;
+   //
    return 0;
 }
