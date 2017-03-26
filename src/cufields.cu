@@ -1,4 +1,4 @@
-include <iostream>
+#include <iostream>
 #include <cuda.h>
 #include <cmath>
 #include <cufft.h>
