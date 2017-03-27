@@ -23,6 +23,7 @@ namespace create{
    // system parameters
    double l = 0.3; // lattice parameter in nm
    // initially we build a cube 
+<<<<<<< HEAD
    double x_size = 30.0;  // size of x component in nm
    double y_size = 30.0;  // size of y component in nm
    double z_size = 30.0;  // size of z component in nm
@@ -32,6 +33,17 @@ namespace create{
    
    //defining origin of the particle
    double part_origin[3]={15.0,15.0,15.0};
+=======
+   double x_size = 60.0;  // size of x component in nm
+   double y_size = 3.0;  // size of y component in nm
+   double z_size = 3.0;  // size of z component in nm
+
+   // defining radii of ellipsoid particle in nm
+   double r_e[3]={24.00,1.4,1.4};
+   
+   //defining origin of the particle
+   double part_origin[3]={30.0,1.5,1.5};
+>>>>>>> 6551780858f46e4d66a2861ab68cb5fed9b41527
 
    // current no of atom
    long int index=0;

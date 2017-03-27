@@ -22,7 +22,10 @@
 #include "../hdr/storage.h"
 #include "../hdr/create.h"
 #include "../hdr/fields.h"
+<<<<<<< HEAD
 #include "../hdr/typedef.h"
+=======
+>>>>>>> 6551780858f46e4d66a2861ab68cb5fed9b41527
 //#include "../hdr/cufields.h"
 int main(){
 
@@ -75,6 +78,7 @@ int main(){
        sz[i]      = st::atom[i].sx;
    }
 
+<<<<<<< HEAD
   thrust::device_vector<double> H_d(create::index);
   thrust::device_vector<double> sx_d(create::index);
   thrust::device_vector<double> sy_d(create::index);
@@ -82,6 +86,15 @@ int main(){
  // cu_real_array_t sx_d(0UL);
  // cu_real_array_t sy_d(0UL);
  // cu_real_array_t sx_d(0UL);
+=======
+//   thrust::device_vector<double> H_d(create::index);
+ //  thrust::device_vector<double> sx_d(create::index);
+  // thrust::device_vector<double> sy_d(create::index);
+  // thrust::device_vector<double> sz_d(create::index);
+  cu_real_array_t sx_d(0UL);
+  cu_real_array_t sy_d(0UL);
+  cu_real_array_t sx_d(0UL);
+>>>>>>> 6551780858f46e4d66a2861ab68cb5fed9b41527
 
    thrust::copy( sx.begin(),
                  sx.end(),
@@ -106,3 +119,7 @@ int main(){
    //#endif
    return 0;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6551780858f46e4d66a2861ab68cb5fed9b41527

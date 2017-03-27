@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6551780858f46e4d66a2861ab68cb5fed9b41527
 #include <iostream>
 #include <cuda.h>
 #include <cmath>
@@ -10,6 +13,7 @@
 #include "../hdr/cufields.h"
 
 namespace cuda{
+<<<<<<< HEAD
 	// defining the prefactor constant as a register for speed up the access
 	//__constant__ float pf = 10e23;
 
@@ -26,3 +30,20 @@ namespace cuda{
 
 
 }//end of namepscare
+=======
+   // defining the prefactor constant as a register for speed up the access
+   //__constant__ float pf = 10e23;
+   __global__ void demag_field(int index,
+                               cu_real_array_t * sx_d,
+                               cu_real_array_t * sy_d){
+
+                               //defining the index
+                               int tdx = blockIdx.x * blockDim.x + threadIdx.x;
+                               return EXIT_SUCCESS;
+     } // end of demag kernel
+
+
+}//end of namepscare 
+~                                                                                                                                                                        
+~ 
+>>>>>>> 6551780858f46e4d66a2861ab68cb5fed9b41527
