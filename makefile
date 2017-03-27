@@ -1,28 +1,30 @@
 #LIBS=-lm -lfftw3
 all: DIPOLAR
-CXX=g++
+CXX=nvcc
 EXE= DIPOLAR
-DIPOLAR: main.o create_sc.o  fields.o storage.o  
+DIPOLAR: main.o create_sc.o  fields.o storage.o  cufields.o
 
-	g++ main.o create_sc.o fields.o  storage.o -o DIPOLAR
+	nvcc main.o create_sc.o fields.o  storage.o cufields.o -o DIPOLAR
 
-main.o: src/main.cpp
+main.o: src/main.cu
 
-	g++ -c src/main.cpp
+	nvcc  src/main.cu
 
 create_sc.o: src/create_sc.cpp
 
-	g++ -c src/create_sc.cpp
+	nvcc src/create_sc.cpp
 
 fields.o: src/fields.cpp
 
-	g++ -c src/fields.cpp
+	nvcc src/fields.cpp
 
 storage.o: src/storage.cpp
 	 
-	 g++ -c src/storage.cpp
+	 nvcc  src/storage.cpp
+
+cufields.o: src/cufields.cu
+	
+	nvcc cufields.cu
 
 clean:
-	rm ./*.o 
-
-
+	rm *.o 
