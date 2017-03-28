@@ -28,11 +28,14 @@
 
 int main(){
 
-   // run create
+   // Iinitialization part & creating the structure----------------------------------------------------------
    create::create_sc();
+   // creating the ellipsoid shape
    create::elli(create::part_origin, create::r_e);
+   //
    std::cout << create::index << std::endl;
-   for(int i =0; i<create::index; i++){
+   // --------------------------------------------------------------------------------------------------------
+/*   for(int i =0; i<create::index; i++){
         std::cout<<st::atom[i].cx<<"\t"<<st::atom[i].cy<<"\t"<<st::atom[i].cz <<"\t"<<st::atom[i].sz<<std::endl;
       }
 
@@ -41,26 +44,52 @@ int main(){
   // fields_t::demag_fields();
    //std::cout<<st::H_total[0]<<"T"<<std::endl;
 
-
+*/
 
    //---------------------------------------------------------------------------------------
    // Cuda part
    // --------------------------------------------------------------------------------------
    // #ifdef CUDA
    //initialize GPU 
-   cuda::initialize_gpu(); 
+   cuda::initialize_gpu();
+
+   // in this step we create some associated pointers to our arrays on device to be able to pass into kernel
+   //------------------------------------------------------------------------------------------------------
+   cuda::cu_real_t * d_sx = thrust::raw_pointer_cast(cuda::sx_d.data());
+   cuda::cu_real_t * d_sy = thrust::raw_pointer_cast(cuda::sy_d.data());
+   cuda::cu_real_t * d_sz = thrust::raw_pointer_cast(cuda::sz_d.data());
+ 
+   cuda::cu_real_t * d_x = thrust::raw_pointer_cast(cuda::x_d.data());
+   cuda::cu_real_t * d_y = thrust::raw_pointer_cast(cuda::y_d.data());
+   cuda::cu_real_t * d_z = thrust::raw_pointer_cast(cuda::z_d.data());
+
+   cuda::cu_real_t * d_Hx = thrust::raw_pointer_cast(cuda::Hx_d.data());
+   cuda::cu_real_t * d_Hy = thrust::raw_pointer_cast(cuda::Hy_d.data());
+   cuda::cu_real_t * d_Hz = thrust::raw_pointer_cast(cuda::Hz_d.data());
+   cuda::cu_real_t * d_H_total = thrust::raw_pointer_cast(cuda::H_tot_d.data());
+   //-----------------------------------------------------------------------------------------------------
+  
+   // we call kernel function and execution--------------------------------------------------------------
    cuda::demag_field<<< cuda::block,cuda::grid >>>(create::index,
-					   cuda::sx_d,
-					   cuda::sy_d,
-					   cuda::sz_d,
-					   cuda::Hx_d,
-					   cuda::Hy_d,
-					   cuda::Hz_d,
-					   cuda::x_d,
-					   cuda::y_d,
-					   cuda::z_d,
-					   cuda::H_tot_d
+					   d_sx,
+					   d_sy,
+					   d_sz,
+					   d_Hx,
+					   d_Hy,
+					   d_Hz,
+					   d_x,
+					   d_y,
+					   d_z,
+					   d_H_total
 					  ); 
+   //------------------------------------------------------------------------------------------------------
+  
+   // copy data from device to host and de-allocate the memory into device 
+   
+   
    //#endif
+
+   // print the results part!
+   // TODO
    return 0;
 }

@@ -19,8 +19,7 @@
 #include <cusp/multiply.h>
 
 namespace cuda{
-	//typedef double cu_real_t;
-	//typedef cusp::array1d <cu_real_t, cusp::device_memory> cu_real_array_t;
-	//typedef double cu_real_t;
+	typedef double cu_real_t;
+	typedef cusp::array1d <cu_real_t, cusp::device_memory> cu_real_array_t;
 
 }
