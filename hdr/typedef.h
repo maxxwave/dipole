@@ -12,14 +12,15 @@
 #include <thrust/iterator/zip_iterator.h>
 #include <thrust/tuple.h>
 
-#include <../library/cusp/copy.h>
-#include <../library/cusp/csr_matrix.h>
-#include <../library/cusp/dia_matrix.h>
-//#include <cusp/ell_matrix.h>
-//#include <cusp/multiply.h>
+#include <cusp/copy.h>
+#include <cusp/csr_matrix.h>
+#include <cusp/dia_matrix.h>
+#include <cusp/ell_matrix.h>
+#include <cusp/multiply.h>
 
 namespace cuda{
-	typedef cusp::array1d <cu_real_t, cusp::dvice_memory> cu_real_array_t;
-	typedef double cu_real_t;
+	//typedef double cu_real_t;
+	//typedef cusp::array1d <cu_real_t, cusp::device_memory> cu_real_array_t;
+	//typedef double cu_real_t;
 
 }
