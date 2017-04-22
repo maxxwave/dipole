@@ -1,0 +1,47 @@
+#!/bin/bash
+
+#$ -notify
+# Job name
+#$ -N test
+
+# Request Queue
+#$ -q tesla.q
+
+#$ -l gpu=1
+#$ -l proc_type=intel*
+#$ -l h_rt=48:00:00
+
+# Export current environment
+#$ -V -cwd
+#$ -j y
+
+
+
+
+ 
+user=`id -un`
+nodes=$HOSTNAME 
+scratch=/scratch/$user/$JOB_ID
+ 
+#====================================================
+# Copy data to nodes
+#====================================================
+mkdir run.$JOB_ID
+cd run.$JOB_ID 
+cp ../a.out .
+
+mkdir $scratch
+cp * $scratch
+cd $scratch
+ 
+#====================================================
+# Executable
+#====================================================
+
+./a.out >aici
+ 
+#====================================================
+# Copy back results
+#====================================================
+ 
+cp -rpv * $SGE_O_WORKDIR;
