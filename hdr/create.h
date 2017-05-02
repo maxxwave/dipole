@@ -10,11 +10,19 @@
 #define __CREARE
 namespace create{
    //declaring the total number of atoms
+<<<<<<< HEAD
    extern unsigned long int index;
    // boundary parameters
    extern int A;
    extern int B;
    extern int C;
+=======
+	extern long int index;
+	// boundary parameters
+	extern int A;
+	extern int B;
+	extern int C;
+>>>>>>> 46dfe907eb4023dfbf695598181d2ddab87c09d9
    // size of initial cube
    extern double x_size;
    extern double y_size;
