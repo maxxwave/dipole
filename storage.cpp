@@ -1,8 +1,9 @@
 // This program is a part of demag field calculation 
-// 
-// 
+// (c) author: xxxx@york.ac.uk
+// last update: 13rd of April
 //-------------------------------------------------------------
-
+// this code is dedicated to store the spin and fields arrays
+//---------------------------------------------------------------
 #include <iostream>
 #include <vector>
 #include "../hdr/template.h"
@@ -12,9 +13,7 @@
 namespace st{ 
    // here is declared the dipolar value according to a specific template created in "../hdr/template.h"
    // this contains 3 components: x, y, and z
-
    std::vector <template_t::H_internal> H_dip;
-
 
    std::vector <double> H_total(3,0.0);
    //std::vector <double> H_applied;
