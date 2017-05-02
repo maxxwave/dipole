@@ -1,0 +1,33 @@
+DEMAG field calculation
+(c)
+
+This code is dedicated to calculate the magnetostatic field of a particle at atomistic scale. Within the presumtion that the particle consists of a regular lattice structure we calculate the magnetostatic interaction of each atom with every atom from the system. Hence, each atom posed a magnetic moment oriented in z direction.
+
+
+1.1. Installation=====================================
+This code can be downloaded from git@github.com:maxxwave/dipole.git
+This code is free to use but no warranty is provided
+To install this code you need to run the makefile.sh script. 
+This will install both versions of the code serial and on cuda. Therefore, before running this script please make sure that your device supports at least cuda 1.1 platform.
+
+sh makefile.sh
+
+1.2. Running Demag field code==========================
+
+by typing ./Serial this will run the serial version. In order to activate the test module, you must pass the flag "--test". A full list of results after testing will be displayed in "lo_file.txt"
+To run the parallel version on cuda you need to type ./CUDA and it is mandatory to pass the number of threads and blocks 
+eg. ./CUDA 1024 1024 this will run on 1024 threads and 1024 blocks.
+If you are running on a cluster, the submision job may be necessary to use. An example of this is given in "submit_gpu".
+
+===============================================================================================================================
+
+>>>>>>>>>>>>>>>>>>>List of files<<<<<<<<<<<<<<
+main.cpp
+cumain.cu
+create_sc.cpp
+storage.cpp
+fields.cpp
+cufields.cu
+demag.cpp
+test.cpp
+

@@ -1,10 +1,5 @@
 #!/bin/bash
 
-string=$1
-if(string='-serial')
-then
-   g++ -O3 src/create_sc.cpp src/main.cpp src/fields.cpp src/storage.cpp src/test.cpp -o serial
-elif(string='-cuda')
-then 
-   nvcc -O3 src/create_sc.cpp src/cumain.cu src/fields.cpp src/storage.cpp src/cufields.cu -o cuda
-fi 
+g++ -O3  -g src/main.cpp src/create_sc.cpp src/storage.cpp src/fields.cpp src/test.cpp src/demag.cpp -o Serial
+
+nvcc -g -O3 src/cumain.cu src/cufields.cu src/create_sc.cpp src/storage.cpp src/fields.cpp -o CUDA
